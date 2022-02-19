@@ -9,113 +9,40 @@ class MainWindow(QtWidgets.QMainWindow, Ui_cake_calc):
     def __init__(self, *args, obj=None, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
         self.setupUi(self)
+        self.ings = []
         self.pushButton.clicked.connect(self.btnClicked)
         self.pushButton_3.clicked.connect(self.setIngreds)
+        self.pushButton_2.clicked.connect(self.ings[0][0].clear)
 
     def setIngreds(self):
-        rows_number = self.spinBox.value()
-        self.lineEdit_3 = QtWidgets.QLineEdit(self.layoutWidget)
-        self.lineEdit_3.setObjectName("lineEdit_3")
-#        self.centralwidget = QtWidgets.QWidget(self)
-#        self.centralwidgetLayout = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.rows_number = self.spinBox.value()
 
-        self.scrollArea = QtWidgets.QScrollArea(self)
-        self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidget = QtWidgets.QWidget()
         self.scrollAreaWidget.setGeometry(QtCore.QRect(0, 0, 780, 539))
         self.scrollAreaWidgetLayout = QtWidgets.QVBoxLayout(self.scrollAreaWidget)
         self.scrollAreaWidgetLayout.addItem(QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding))
         self.scrollArea.setWidget(self.scrollAreaWidget)
 
-        self.verticalLayout.addWidget(self.scrollArea)
-        #self.setCentralWidget(self.centralwidget)
-
-        for count in range(0,rows_number):
-            groupBox = QtWidgets.QGroupBox('GroupBox ' + str(count), self.scrollAreaWidget)
+      #  self.ings = []
+        for count in range(0,self.rows_number):
+            groupBox = QtWidgets.QGroupBox(self.scrollAreaWidget)
             self.scrollAreaWidgetLayout.insertWidget(count, groupBox)
-
-#            comboBox = QtWidgets.QComboBox(groupBox)
-#            comboBox.addItems(['val1', 'val2', 'val3'])
 
             gridLayout = QtWidgets.QGridLayout(groupBox)
             gridLayout.addWidget(QtWidgets.QLabel('Ingridient ' + str(count), groupBox),1, 0, 1, 1)
             self.lineEdit_1 = QtWidgets.QLineEdit(groupBox)
-            self.lineEdit_1.setObjectName("lineEdit_1")
             gridLayout.addWidget(self.lineEdit_1, 1, 1, 1, 1)
             self.lineEdit_2 = QtWidgets.QLineEdit(groupBox)
-            self.lineEdit_2.setObjectName("lineEdit_2")
             gridLayout.addWidget(self.lineEdit_2, 1, 2, 1, 1)
             self.lineEdit_3 = QtWidgets.QLineEdit(groupBox)
-            self.lineEdit_3.setObjectName("lineEdit_3")
             gridLayout.addWidget(self.lineEdit_3, 1, 3, 1, 1)
-
-#            gridLayout.addWidget(QtWidgets.QLineEdit(groupBox), 1, 1, 1, 1)
-#            gridLayout.addWidget(QtWidgets.QLineEdit(groupBox), 1, 2, 1, 1)
-#            gridLayout.addWidget(QtWidgets.QLineEdit(groupBox), 1, 3, 1, 1)
-
-
-#            self.label_2 = QtWidgets.QLabel(self.layoutWidget)
-#            self.label_2.setObjectName("label_2")
-#            self.gridLayout.addWidget(self.label_2, 1, 0, 1, 1)
-#            self.lineEdit_1 = QtWidgets.QLineEdit(self.layoutWidget)
-#            self.lineEdit_1.setObjectName("lineEdit_1")
-#            self.gridLayout.addWidget(self.lineEdit_1, 1, 1, 1, 1)
-#            self.lineEdit_2 = QtWidgets.QLineEdit(self.layoutWidget)
-#            self.lineEdit_2.setObjectName("lineEdit_2")
-#            self.gridLayout.addWidget(self.lineEdit_2, 1, 2, 1, 1)
-#            self.lineEdit_3 = QtWidgets.QLineEdit(self.layoutWidget)
-#            self.lineEdit_3.setObjectName("lineEdit_3")
-#            self.gridLayout.addWidget(self.lineEdit_3, 1, 3, 1, 1)
-
-#            gridLayout = QtWidgets.QGridLayout(groupBox)
-#            gridLayout.addWidget(QtWidgets.QLabel('Label ' + str(count), groupBox),       0, 0, 1, 1)
-#            gridLayout.addWidget(QtWidgets.QLineEdit('LineEdit ' + str(count), groupBox), 0, 1, 1, 1)
-#            gridLayout.addWidget(comboBox,                                                1, 0, 1, 1)
-#            gridLayout.addWidget(QtWidgets.QSlider(QtCore.Qt.Horizontal, groupBox),       1, 1, 1, 1)
-#        self.gridLayout = QtWidgets.QGridLayout()
-#        self.gridLayout.setObjectName("gridLayout")
-#        self.label_5 = QtWidgets.QLabel(self.layoutWidget)
-#        self.label_5.setAlignment(QtCore.Qt.AlignCenter)
-#        self.label_5.setObjectName("label_5")
-#        self.gridLayout.addWidget(self.label_5, 0, 1, 1, 1)
-#        self.label_6 = QtWidgets.QLabel(self.layoutWidget)
-#        self.label_6.setAlignment(QtCore.Qt.AlignCenter)
-#        self.label_6.setObjectName("label_6")
-#        self.gridLayout.addWidget(self.label_6, 0, 2, 1, 1)
-#        self.label_7 = QtWidgets.QLabel(self.layoutWidget)
-#        self.label_7.setAlignment(QtCore.Qt.AlignCenter)
-#        self.label_7.setObjectName("label_7")
-#        self.gridLayout.addWidget(self.label_7, 0, 3, 1, 1)
-
-#        for i in range(1,rows_number):
-#            self.label_2 = QtWidgets.QLabel(self.layoutWidget)
-#            self.label_2.setObjectName("label_2")
-#            self.gridLayout.addWidget(self.label_2, 1, 0, 1, 1)
-#            self.lineEdit_1 = QtWidgets.QLineEdit(self.layoutWidget)
-#            self.lineEdit_1.setObjectName("lineEdit_1")
-#            self.gridLayout.addWidget(self.lineEdit_1, 1, 1, 1, 1)
-#            self.lineEdit_2 = QtWidgets.QLineEdit(self.layoutWidget)
-#            self.lineEdit_2.setObjectName("lineEdit_2")
-#            self.gridLayout.addWidget(self.lineEdit_2, 1, 2, 1, 1)
-#            self.lineEdit_3 = QtWidgets.QLineEdit(self.layoutWidget)
-#            self.lineEdit_3.setObjectName("lineEdit_3")
-#            self.gridLayout.addWidget(self.lineEdit_3, 1, 3, 1, 1)
-#        self.textEdit.setText(lineEdit_1.text())
-
+            self.ings.append((self.lineEdit_1, self.lineEdit_2, self.lineEdit_3))
 
     def btnClicked(self):
-#        used_1 = float(self.lineEdit_1.text())
-#        used_2 = float(self.lineEdit_4.text())
-#        used_3 = float(self.lineEdit_7.text())
-#        total_1 = float(self.lineEdit_2.text())
-#        total_2 = float(self.lineEdit_5.text())
-#        total_3 = float(self.lineEdit_8.text())
-#        price_1 = float(self.lineEdit_3.text())
-#        price_2 = float(self.lineEdit_6.text())
-#        price_3 = float(self.lineEdit_9.text())
-#        res = 'Result sum: '+ str(round(used_1*price_1/total_1+used_2*price_2/total_2+used_3*price_3/total_3, 3))
-#        self.textEdit.setText(res)
-        self.textEdit.setText(self.lineEdit_1.text())
+        res = 0
+        for i in range(0, self.rows_number):
+            res = str(float(res) + float(self.ings[i][0].text())*float(self.ings[i][2].text())/float(self.ings[i][1].text()))
+        self.textEdit.setText(res)
 
 app = QtWidgets.QApplication(sys.argv)
 

@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_cake_calc(object):
     def setupUi(self, cake_calc):
         cake_calc.setObjectName("cake_calc")
-        cake_calc.resize(500, 345)
+        cake_calc.resize(500, 366)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -22,7 +22,7 @@ class Ui_cake_calc(object):
         cake_calc.setSizePolicy(sizePolicy)
         cake_calc.setMaximumSize(QtCore.QSize(500, 500))
         self.layoutWidget = QtWidgets.QWidget(cake_calc)
-        self.layoutWidget.setGeometry(QtCore.QRect(70, 60, 351, 231))
+        self.layoutWidget.setGeometry(QtCore.QRect(60, 40, 351, 231))
         self.layoutWidget.setObjectName("layoutWidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.layoutWidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -193,6 +193,20 @@ class Ui_cake_calc(object):
         self.pushButton_3.setObjectName("pushButton_3")
         self.horizontalLayout_3.addWidget(self.pushButton_3)
         self.verticalLayout.addLayout(self.horizontalLayout_3)
+        self.scrollArea = QtWidgets.QScrollArea(self.layoutWidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(1)
+        sizePolicy.setHeightForWidth(self.scrollArea.sizePolicy().hasHeightForWidth())
+        self.scrollArea.setSizePolicy(sizePolicy)
+        self.scrollArea.setMaximumSize(QtCore.QSize(16777215, 200))
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setObjectName("scrollArea")
+        self.scrollAreaWidgetContents = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 347, 130))
+        self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        self.verticalLayout.addWidget(self.scrollArea)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.pushButton_2 = QtWidgets.QPushButton(self.layoutWidget)
@@ -215,6 +229,7 @@ class Ui_cake_calc(object):
         self.verticalLayout.addLayout(self.horizontalLayout)
 
         self.retranslateUi(cake_calc)
+        self.pushButton_2.clicked.connect(self.spinBox.clear)
         QtCore.QMetaObject.connectSlotsByName(cake_calc)
 
     def retranslateUi(self, cake_calc):
