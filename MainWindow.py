@@ -229,7 +229,6 @@ class Ui_cake_calc(object):
         self.verticalLayout.addLayout(self.horizontalLayout)
 
         self.retranslateUi(cake_calc)
-        self.pushButton_2.clicked.connect(self.spinBox.clear)
         QtCore.QMetaObject.connectSlotsByName(cake_calc)
 
     def retranslateUi(self, cake_calc):
